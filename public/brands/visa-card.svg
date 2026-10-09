@@ -1,0 +1,7 @@
+<svg width="120" height="75" viewBox="0 0 120 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="75" rx="8" fill="#1A1F71"/>
+  <text x="60" y="45" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#F7B600" text-anchor="middle">
+    VISA
+  </text>
+  <rect x="20" y="55" width="35" height="8" rx="2" fill="#F7B600" opacity="0.5"/>
+</svg>

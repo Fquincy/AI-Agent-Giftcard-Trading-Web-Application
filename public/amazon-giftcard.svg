@@ -1,0 +1,43 @@
+<svg width="320" height="200" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Amazon Gift Card Background -->
+  <rect width="320" height="200" rx="20" fill="url(#amazonGradient)"/>
+  <defs>
+    <linearGradient id="amazonGradient" x1="0" y1="0" x2="320" y2="200">
+      <stop offset="0%" stop-color="#FF9900"/>
+      <stop offset="100%" stop-color="#FF6600"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Decorative Pattern -->
+  <circle cx="280" cy="30" r="60" fill="rgba(255, 255, 255, 0.1)"/>
+  <circle cx="40" cy="170" r="40" fill="rgba(255, 255, 255, 0.1)"/>
+
+  <!-- Amazon Logo Area -->
+  <text x="30" y="50" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="white">
+    amazon
+  </text>
+
+  <!-- Smile Arrow -->
+  <path d="M 40 65 Q 100 75 160 65" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 155 60 L 160 65 L 155 70" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Gift Card Text -->
+  <text x="30" y="120" font-family="Arial, sans-serif" font-size="18" fill="rgba(255, 255, 255, 0.9)">
+    GIFT CARD
+  </text>
+
+  <!-- Card Number -->
+  <rect x="30" y="135" width="260" height="30" rx="5" fill="rgba(255, 255, 255, 0.2)"/>
+  <text x="45" y="156" font-family="monospace" font-size="14" fill="white" letter-spacing="2">
+    XXXX-XXXX-XXXX-1234
+  </text>
+
+  <!-- Barcode -->
+  <rect x="240" y="30" width="2" height="30" fill="rgba(255, 255, 255, 0.6)"/>
+  <rect x="245" y="30" width="3" height="30" fill="rgba(255, 255, 255, 0.6)"/>
+  <rect x="250" y="30" width="2" height="30" fill="rgba(255, 255, 255, 0.6)"/>
+  <rect x="254" y="30" width="4" height="30" fill="rgba(255, 255, 255, 0.6)"/>
+  <rect x="260" y="30" width="2" height="30" fill="rgba(255, 255, 255, 0.6)"/>
+  <rect x="265" y="30" width="3" height="30" fill="rgba(255, 255, 255, 0.6)"/>
+  <rect x="270" y="30" width="2" height="30" fill="rgba(255, 255, 255, 0.6)"/>
+</svg>

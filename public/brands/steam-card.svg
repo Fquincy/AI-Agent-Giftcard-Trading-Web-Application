@@ -1,0 +1,8 @@
+<svg width="120" height="75" viewBox="0 0 120 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="75" rx="8" fill="#1B2838"/>
+  <text x="60" y="45" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">
+    STEAM
+  </text>
+  <circle cx="30" cy="25" r="8" fill="none" stroke="#66C0F4" stroke-width="2"/>
+  <circle cx="35" cy="20" r="3" fill="#66C0F4"/>
+</svg>

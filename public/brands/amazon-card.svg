@@ -1,0 +1,8 @@
+<svg width="120" height="75" viewBox="0 0 120 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="75" rx="8" fill="#FF9900"/>
+  <text x="60" y="45" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">
+    amazon
+  </text>
+  <path d="M30 50 Q60 55 90 50" stroke="white" stroke-width="2" fill="none"/>
+  <path d="M85 48 L90 50 L85 52" stroke="white" stroke-width="2" fill="none"/>
+</svg>

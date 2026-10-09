@@ -1,0 +1,321 @@
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, #f8fcff 0%, #ffffff 50%, #f0fffa 100%);
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.register-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.register-gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+  animation: float-orb 20s infinite ease-in-out;
+}
+
+.register-gradient-orb.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(27, 243, 186, 0.4) 0%, transparent 70%);
+  top: -10%;
+  right: -5%;
+}
+
+.register-gradient-orb.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(100, 255, 210, 0.3) 0%, transparent 70%);
+  bottom: -10%;
+  left: -5%;
+  animation-delay: 7s;
+}
+
+.register-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(27, 243, 186, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 243, 186, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+}
+
+@keyframes float-orb {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(50px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.9);
+  }
+}
+
+.register-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 600px;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
+}
+
+.back-button:hover {
+  color: rgb(27, 243, 186);
+  transform: translateX(-4px);
+}
+
+.back-button svg {
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover svg {
+  transform: translateX(-2px);
+}
+
+.register-logo-link {
+  display: block;
+  text-align: center;
+  margin-bottom: 3rem;
+  transition: transform 0.3s ease;
+}
+
+.register-logo-link:hover {
+  transform: scale(1.05);
+}
+
+.register-card {
+  background: white;
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(27, 243, 186, 0.1);
+}
+
+.register-welcome {
+  font-size: 0.9375rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.register-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #0a0a0a;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.register-subtitle {
+  font-size: 1rem;
+  color: #64748b;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #0a0a0a;
+}
+
+.form-input {
+  padding: 1rem 1.25rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+  color: #0a0a0a;
+  font-family: inherit;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: rgb(27, 243, 186);
+  box-shadow: 0 0 0 4px rgba(27, 243, 186, 0.1);
+}
+
+.form-input.error {
+  border-color: #ef4444;
+}
+
+.form-input.error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+.form-input::placeholder {
+  color: #94a3b8;
+}
+
+.phone-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.phone-input-wrapper:focus-within {
+  border-color: rgb(27, 243, 186);
+  box-shadow: 0 0 0 4px rgba(27, 243, 186, 0.1);
+}
+
+.phone-input-wrapper.error {
+  border-color: #ef4444;
+}
+
+.phone-input-wrapper.error:focus-within {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+.country-code-display {
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0a0a0a;
+  background: rgba(27, 243, 186, 0.05);
+  border-right: 2px solid rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.phone-input {
+  flex: 1;
+  border: none;
+  padding: 1rem 1.25rem;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.phone-input:focus {
+  box-shadow: none;
+  border: none;
+}
+
+.password-requirements {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+.error-message {
+  font-size: 0.875rem;
+  color: #ef4444;
+  font-weight: 500;
+  margin-top: -0.25rem;
+}
+
+.btn-register-submit {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  background: linear-gradient(135deg, rgb(27, 243, 186) 0%, rgb(20, 200, 150) 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(27, 243, 186, 0.3);
+  margin-top: 1rem;
+}
+
+.btn-register-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(27, 243, 186, 0.4);
+}
+
+.btn-register-submit:active {
+  transform: translateY(0);
+}
+
+.login-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.login-text {
+  font-size: 0.9375rem;
+  color: #64748b;
+}
+
+.btn-login-link {
+  color: rgb(27, 243, 186);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.btn-login-link:hover {
+  color: rgb(20, 200, 150);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .register-container {
+    padding: 1rem;
+  }
+
+  .register-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .register-title {
+    font-size: 2rem;
+  }
+
+  .register-subtitle {
+    font-size: 0.9375rem;
+  }
+}
+

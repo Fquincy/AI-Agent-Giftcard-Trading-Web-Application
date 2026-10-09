@@ -1,0 +1,50 @@
+<svg width="320" height="200" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Steam Gift Card Background -->
+  <rect width="320" height="200" rx="20" fill="url(#steamGradient)"/>
+  <defs>
+    <linearGradient id="steamGradient" x1="0" y1="0" x2="320" y2="200">
+      <stop offset="0%" stop-color="#1b2838"/>
+      <stop offset="100%" stop-color="#2a475e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Decorative Gears -->
+  <circle cx="280" cy="35" r="25" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="2"/>
+  <circle cx="40" cy="165" r="20" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="2"/>
+
+  <!-- Steam Logo (simplified) -->
+  <circle cx="50" cy="45" r="20" fill="none" stroke="white" stroke-width="3"/>
+  <circle cx="58" cy="38" r="6" fill="white"/>
+  <line x1="52" y1="44" x2="40" y2="56" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="40" cy="56" r="4" fill="white"/>
+
+  <!-- Steam Text -->
+  <text x="80" y="55" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="white">
+    STEAM
+  </text>
+
+  <!-- Gift Card Text -->
+  <text x="30" y="110" font-family="Arial, sans-serif" font-size="16" fill="rgba(255, 255, 255, 0.9)">
+    WALLET GIFT CARD
+  </text>
+
+  <!-- Card Number -->
+  <rect x="30" y="125" width="260" height="30" rx="5" fill="rgba(255, 255, 255, 0.1)"/>
+  <text x="45" y="146" font-family="monospace" font-size="14" fill="white" letter-spacing="2">
+    XXXX-XXXX-XXXX-9012
+  </text>
+
+  <!-- Code Box -->
+  <rect x="30" y="165" width="100" height="25" rx="3" fill="rgba(102, 192, 244, 0.2)"/>
+  <text x="40" y="181" font-family="Arial, sans-serif" font-size="11" fill="#66C0F4" font-weight="bold">
+    REDEEM CODE
+  </text>
+
+  <!-- QR Code Placeholder -->
+  <rect x="240" y="125" width="50" height="50" rx="3" fill="rgba(255, 255, 255, 0.1)"/>
+  <rect x="245" y="130" width="40" height="40" rx="2" fill="white"/>
+  <rect x="250" y="135" width="10" height="10" fill="#1b2838"/>
+  <rect x="265" y="135" width="10" height="10" fill="#1b2838"/>
+  <rect x="250" y="150" width="10" height="10" fill="#1b2838"/>
+  <rect x="265" y="150" width="10" height="10" fill="#1b2838"/>
+</svg>

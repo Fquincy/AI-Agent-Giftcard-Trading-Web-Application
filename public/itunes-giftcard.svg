@@ -1,0 +1,44 @@
+<svg width="320" height="200" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- iTunes Gift Card Background -->
+  <rect width="320" height="200" rx="20" fill="url(#itunesGradient)"/>
+  <defs>
+    <linearGradient id="itunesGradient" x1="0" y1="0" x2="320" y2="200">
+      <stop offset="0%" stop-color="#FF2D55"/>
+      <stop offset="100%" stop-color="#FF006E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Decorative Pattern -->
+  <circle cx="270" cy="40" r="50" fill="rgba(255, 255, 255, 0.1)"/>
+  <circle cx="50" cy="160" r="35" fill="rgba(255, 255, 255, 0.1)"/>
+
+  <!-- Apple Logo (simplified) -->
+  <circle cx="35" cy="38" r="12" fill="white"/>
+  <path d="M 35 26 Q 30 20 35 15" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- iTunes Text -->
+  <text x="55" y="45" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white">
+    iTunes
+  </text>
+
+  <!-- Gift Card Text -->
+  <text x="30" y="100" font-family="Arial, sans-serif" font-size="16" fill="rgba(255, 255, 255, 0.9)">
+    GIFT CARD
+  </text>
+
+  <!-- Card Number -->
+  <rect x="30" y="115" width="260" height="30" rx="5" fill="rgba(255, 255, 255, 0.2)"/>
+  <text x="45" y="136" font-family="monospace" font-size="14" fill="white" letter-spacing="2">
+    XXXX-XXXX-XXXX-5678
+  </text>
+
+  <!-- Music Notes Decoration -->
+  <text x="230" y="100" font-size="40" fill="rgba(255, 255, 255, 0.2)">♪</text>
+  <text x="260" y="80" font-size="30" fill="rgba(255, 255, 255, 0.15)">♫</text>
+
+  <!-- Scan Code -->
+  <rect x="30" y="160" width="80" height="25" rx="3" fill="rgba(255, 255, 255, 0.15)"/>
+  <text x="40" y="176" font-family="Arial, sans-serif" font-size="10" fill="white">
+    SCAN HERE
+  </text>
+</svg>

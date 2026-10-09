@@ -1,0 +1,7 @@
+<svg width="120" height="75" viewBox="0 0 120 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="75" rx="8" fill="#000000"/>
+  <text x="60" y="45" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">
+    NIKE
+  </text>
+  <path d="M20 25 L35 30 L40 28 Z" fill="white"/>
+</svg>
