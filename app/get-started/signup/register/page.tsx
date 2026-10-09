@@ -4,13 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-
-const countryCodes: Record<string, string> = {
-  nigeria: '+234',
-  ghana: '+233',
-};
+import { countryCodes, isCountry, passwordError } from '../../../lib/registration';
 
 export default function RegisterPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,13 +19,14 @@ export default function RegisterPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [countryCode, setCountryCode] = useState<string>('+234');
-  const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   useEffect(() => {
     // Get selected country from sessionStorage
     const country = sessionStorage.getItem('selectedCountry');
-    setSelectedCountry(country);
-    if (country && countryCodes[country]) {
+    if (isCountry(country)) {
+      setSelectedCountry(country);
       setCountryCode(countryCodes[country]);
     }
   }, []);
@@ -80,22 +78,9 @@ export default function RegisterPage() {
       newErrors.address = 'Address is required';
     }
 
-    if (!formData.password) {
-      newErrors.password = 'Password is required';
-    } else {
-      const password = formData.password;
-      if (password.length < 8) {
-        newErrors.password = 'Password must be at least 8 characters';
-      } else if (!/[A-Z]/.test(password)) {
-        newErrors.password = 'Password must contain at least one uppercase letter';
-      } else if (!/[a-z]/.test(password)) {
-        newErrors.password = 'Password must contain at least one lowercase letter';
-      } else if (!/[0-9]/.test(password)) {
-        newErrors.password = 'Password must contain at least one number';
-      } else if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
-        newErrors.password = 'Password must contain at least one special character';
-      }
-    }
+    const passwordMessage = passwordError(formData.password);
+    if (passwordMessage) newErrors.password = passwordMessage;
+    if (!isCountry(selectedCountry)) newErrors.country = 'Please choose your country before registering';
 
     if (!formData.retypePassword) {
       newErrors.retypePassword = 'Please retype your password';
@@ -107,76 +92,43 @@ export default function RegisterPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const sendWelcomeEmail = async (email: string, password: string, name: string) => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+    setSubmitMessage('');
+    if (!validateForm()) {
+      setSubmitMessage('Please correct the highlighted fields before creating your account.');
+      return;
+    }
+    setIsSubmitting(true);
+
     try {
-      // Call your backend API to send welcome email
-      // Replace this with your actual API endpoint
-      const response = await fetch('/api/send-welcome-email', {
+      // Password confirmation is local only; it is not part of the API payload.
+      const response = await fetch('/api/register', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email,
-          password,
-          name,
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: countryCode + formData.phone.replace(/^0+/, ''),
+          address: formData.address.trim(),
+          password: formData.password,
           country: selectedCountry,
         }),
       });
-
+      const result = await response.json();
       if (!response.ok) {
-        console.error('Failed to send welcome email');
+        if (result.errors && typeof result.errors === 'object') setErrors(result.errors);
+        setSubmitMessage(typeof result.error === 'string' ? result.error : 'Registration failed. Please try again.');
+        return;
       }
-    } catch (error) {
-      console.error('Error sending welcome email:', error);
-      // Don't block registration if email fails
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (validateForm()) {
-      const fullPhoneNumber = `${countryCode}${formData.phone}`;
-      const registrationData = {
-        ...formData,
-        phone: fullPhoneNumber,
-        country: selectedCountry,
-      };
-
-      try {
-        // Here you would typically send the data to your backend API
-        // Replace this with your actual API endpoint
-        const response = await fetch('/api/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(registrationData),
-        });
-
-        if (response.ok) {
-          // Send welcome email with password
-          await sendWelcomeEmail(
-            formData.email,
-            formData.password,
-            formData.name
-          );
-
-          alert('Registration successful! A welcome email has been sent to your email address.');
-          router.push('/login');
-        } else {
-          const errorData = await response.json();
-          alert(`Registration failed: ${errorData.message || 'Please try again'}`);
-        }
-      } catch (error) {
-        console.error('Registration error:', error);
-        // For demo purposes, still show success if API is not available
-        alert('Registration successful! (Demo mode - implement your API endpoint)');
-        // In production, you would still want to send the email
-        // await sendWelcomeEmail(formData.email, formData.password, formData.name);
-        router.push('/login');
-      }
+      setSubmitMessage('Account created. You can now log in.');
+      setFormData(previous => ({ ...previous, password: '', retypePassword: '' }));
+      router.replace('/login?registered=1');
+    } catch {
+      setSubmitMessage('Unable to confirm registration. Check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -212,6 +164,8 @@ export default function RegisterPage() {
           <h1 className="register-title">Create Your Account</h1>
           <p className="register-subtitle">Fill in your details to get started</p>
 
+          <p className="register-subtitle">This is a learning application. Please use sample details only.</p>
+          {errors.country && <p role="alert"><Link href="/get-started/signup">{errors.country}</Link></p>}
           <form onSubmit={handleSubmit} className="register-form" aria-label="Registration form">
             <div className="form-group">
               <label htmlFor="name" className="form-label">Full Name</label>
@@ -358,8 +312,10 @@ export default function RegisterPage() {
               )}
             </div>
 
-            <button type="submit" className="btn-register-submit" aria-label="Submit registration form">
-              Create Account
+            {submitMessage && <p role="alert" aria-live="polite">{submitMessage}</p>}
+            {errors.country && <p role="alert"><Link href="/get-started/signup">Choose your country to continue</Link></p>}
+            <button type="submit" disabled={isSubmitting} className="btn-register-submit" aria-label="Submit registration form">
+              {isSubmitting ? 'Submitting...' : 'Create Account'}
             </button>
 
             <div className="login-link">

@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+model User {
+  id String @id @default(cuid())
+  name String
+  email String @unique
+  phone String
+  address String
+  country String
+  passwordHash String
+  createdAt DateTime @default(now())
+  sessions Session[]
+  trades Trade[]
+  tickets SupportTicket[]
+}
+model Session {
+  id String @id @default(cuid())
+  tokenHash String @unique
+  userId String
+  expiresAt DateTime
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
+  @@index([expiresAt])
+}
+model LoginAttempt {
+  key String @id
+  count Int @default(1)
+  expiresAt DateTime
+  @@index([expiresAt])
+}
+model GiftCardType {
+  id String @id
+  name String
+  rates Rate[]
+  trades Trade[]
+}
+model Rate {
+  id String @id @default(cuid())
+  cardTypeId String
+  currency String
+  amountPerUsd Decimal @db.Decimal(12, 4)
+  updatedAt DateTime @updatedAt
+  cardType GiftCardType @relation(fields: [cardTypeId], references: [id])
+  @@unique([cardTypeId, currency])
+}
+model Trade {
+  id String @id @default(cuid())
+  userId String
+  cardTypeId String
+  amountMinor Int
+  currency String
+  status String @default("pending")
+  createdAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cardType GiftCardType @relation(fields: [cardTypeId], references: [id])
+  @@index([userId, createdAt])
+}
+model SupportTicket {
+  id String @id @default(cuid())
+  userId String
+  subject String
+  status String @default("open")
+  createdAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
+}

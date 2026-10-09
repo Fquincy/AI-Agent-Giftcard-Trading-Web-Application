@@ -143,4 +143,4 @@ Do not learn every framework in an advertisement, begin with multiple agents, tr
 
 ## Immediate next step
 
-Complete GitHub setup before implementing the database or agent. At inspection, GitHub CLI was absent and Git author identity was not configured. Finish account authentication locally; never paste passwords or access tokens into chat.
+GitHub setup is complete: the local repository tracks the public GitHub repository and the initial prototype has been pushed. Foundation fixes and the database/authentication milestone are implemented locally. Read [Lesson 1](LESSON_1.md) for validation and [Lesson 2](LESSON_2.md) for PostgreSQL, sessions, and authorized queries. Next: build a server-side FAQ assistant before adding agent tools. Never paste passwords or access tokens into chat.

@@ -326,49 +326,49 @@ export default function Home() {
             <div className="testimonials-track">
               <div className="testimonial-item">
                 <div className="testimonial-bubble">
-                  <p className="testimonial-text">"Fast and reliable service! Got my payment within minutes."</p>
+                  <p className="testimonial-text">&quot;Fast and reliable service! Got my payment within minutes.&quot;</p>
                   <span className="testimonial-name">- Sarah Johnson</span>
                 </div>
               </div>
               <div className="testimonial-item">
                 <div className="testimonial-bubble">
-                  <p className="testimonial-text">"Best rates I've found anywhere. Highly recommended!"</p>
+                  <p className="testimonial-text">&quot;Best rates I&apos;ve found anywhere. Highly recommended!&quot;</p>
                   <span className="testimonial-name">- Michael Chen</span>
                 </div>
               </div>
               <div className="testimonial-item">
                 <div className="testimonial-bubble">
-                  <p className="testimonial-text">"Customer support is amazing. They helped me every step of the way."</p>
+                  <p className="testimonial-text">&quot;Customer support is amazing. They helped me every step of the way.&quot;</p>
                   <span className="testimonial-name">- Emily Rodriguez</span>
                 </div>
               </div>
               <div className="testimonial-item">
                 <div className="testimonial-bubble">
-                  <p className="testimonial-text">"Secure platform and instant payments. What more could you ask for?"</p>
+                  <p className="testimonial-text">&quot;Secure platform and instant payments. What more could you ask for?&quot;</p>
                   <span className="testimonial-name">- David Thompson</span>
                 </div>
               </div>
               <div className="testimonial-item">
                 <div className="testimonial-bubble">
-                  <p className="testimonial-text">"I've been using this service for months. Never had any issues!"</p>
+                  <p className="testimonial-text">&quot;I&apos;ve been using this service for months. Never had any issues!&quot;</p>
                   <span className="testimonial-name">- Lisa Anderson</span>
                 </div>
               </div>
               <div className="testimonial-item">
                 <div className="testimonial-bubble">
-                  <p className="testimonial-text">"Fast and reliable service! Got my payment within minutes."</p>
+                  <p className="testimonial-text">&quot;Fast and reliable service! Got my payment within minutes.&quot;</p>
                   <span className="testimonial-name">- Sarah Johnson</span>
                 </div>
               </div>
               <div className="testimonial-item">
                 <div className="testimonial-bubble">
-                  <p className="testimonial-text">"Best rates I've found anywhere. Highly recommended!"</p>
+                  <p className="testimonial-text">&quot;Best rates I&apos;ve found anywhere. Highly recommended!&quot;</p>
                   <span className="testimonial-name">- Michael Chen</span>
                 </div>
               </div>
               <div className="testimonial-item">
                 <div className="testimonial-bubble">
-                  <p className="testimonial-text">"Customer support is amazing. They helped me every step of the way."</p>
+                  <p className="testimonial-text">&quot;Customer support is amazing. They helped me every step of the way.&quot;</p>
                   <span className="testimonial-name">- Emily Rodriguez</span>
                 </div>
               </div>

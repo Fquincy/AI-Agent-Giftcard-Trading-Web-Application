@@ -65,7 +65,7 @@ export default function SignupPage() {
                 />
               </div>
               <div className="country-info">
-                <span className="country-label">I'm a Nigerian</span>
+                <span className="country-label">I&apos;m a Nigerian</span>
               </div>
               {selectedCountry === 'nigeria' && (
                 <div className="selected-indicator">
@@ -92,7 +92,7 @@ export default function SignupPage() {
                 />
               </div>
               <div className="country-info">
-                <span className="country-label">I'm a Ghanian</span>
+                <span className="country-label">I&apos;m a Ghanian</span>
               </div>
               {selectedCountry === 'ghana' && (
                 <div className="selected-indicator">

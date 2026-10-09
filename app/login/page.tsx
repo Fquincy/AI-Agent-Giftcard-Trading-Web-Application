@@ -2,16 +2,40 @@
 import './login.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const [busy, setBusy] = useState(false);
+  const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get('registered') === '1') {
+      setMessage('Account created successfully. Log in with the email and password you registered.');
+      window.history.replaceState(null, '', '/login');
+    }
+  }, []);
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Login attempt:', { email, password });
+    if (busy) return;
+    setBusy(true);
+    setMessage('');
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim(), password }),
+      });
+      const result = await response.json();
+      if (!response.ok) { setMessage(result.error || 'Unable to log in. Please try again.'); return; }
+      setPassword('');
+      router.replace('/dashboard');
+      router.refresh();
+    } catch { setMessage('Check your connection and try again.'); }
+    finally { setBusy(false); }
   };
 
   return (
@@ -42,17 +66,18 @@ export default function LoginPage() {
         </Link>
 
         <div className="login-card">
-          <h1 className="login-title">Let's get you back in</h1>
+          <h1 className="login-title">Let&apos;s get you back in</h1>
 
+          {message && <p role="status" aria-live="polite">{message}</p>}
           <form onSubmit={handleLogin} className="login-form" aria-label="Login form">
             <div className="form-group">
-              <label htmlFor="email" className="form-label">Email / Username</label>
+              <label htmlFor="email" className="form-label">Email Address</label>
               <input
-                type="text"
+                type="email"
                 id="email"
                 name="email"
                 className="form-input"
-                placeholder="Enter your email or username"
+                placeholder="Enter your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -80,16 +105,16 @@ export default function LoginPage() {
             <div className="form-actions">
               <div className="forgot-password">
                 <span className="forgot-text">Forget password?</span>
-                <button type="button" className="btn-reset">Reset password</button>
+                <button type="button" onClick={() => setMessage('Password reset is not available yet.')} className="btn-reset">Reset password</button>
               </div>
             </div>
 
-            <button type="submit" className="btn-login-submit" aria-label="Submit login form">
-              Process login
+            <button type="submit" disabled={busy} className="btn-login-submit" aria-label="Submit login form">
+              {busy ? 'Logging in...' : 'Log in'}
             </button>
 
             <div className="signup-link">
-              <span className="signup-text">Don't have an account?</span>
+              <span className="signup-text">Don&apos;t have an account?</span>
               <Link href="/get-started" className="btn-signup-link">Signup</Link>
             </div>
           </form>
